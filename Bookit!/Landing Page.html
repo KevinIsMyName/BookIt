@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <script src="https://www.gstatic.com/firebasejs/5.9.4/firebase.js"></script>
+<script src="search.js"></script>
 <script>
     // Initialize Firebase
     var config = {
@@ -15,9 +16,36 @@
 </script>
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>BookIt!</title>
 </head>
 <body>
-
+<div id="restaurant1">
+    <h2 id="restaurant1title">Restaurant 1 title</h2>
+    <h4 id="restaurant1address">Restaurant 1 address</h4>
+    Ratings: <span id="restaurant1ratings">★★★★☆</span><br>
+    Price point: <span id="restaurant1pricePoint">$$</span><br>
+    Family friendly? <span id="restaurant1familyFriendly">Yes</span><br>
+    Noisy? <span id="restaurant1noise">Loud</span><br>
+    Nearby? <span id="restaurant1proximity">5 mi</span><br>
+    Alcohol? <span id="restaurant1alcohol">Yes</span><br>
+    Parking? <span id="restaurant1parking">Yes</span><br>
+    Vegetarian? <span id="restaurant1vegetarian">No</span><br>
+    Wait time? <span id="restaurant1wait">15 mins</span><br>
+</div>
+<div id="restaurant1">
+    <h2 id="restaurant1title">Restaurant 1 title</h2>
+    <h4 id="restaurant1address">Restaurant 1 address</h4>
+    Ratings: <span id="restaurant1ratings">★★★★☆</span><br>
+    Price point: <span id="restaurant1pricePoint">$$</span><br>
+    Family friendly? <span id="restaurant1familyFriendly">Yes</span><br>
+    Noisy? <span id="restaurant1noise">Loud</span><br>
+    Nearby? <span id="restaurant1proximity">5 mi</span><br>
+    Alcohol? <span id="restaurant1alcohol">Yes</span><br>
+    Parking? <span id="restaurant1parking">Yes</span><br>
+    Vegetarian? <span id="restaurant1vegetarian">No</span><br>
+    Wait time? <span id="restaurant1wait">15 mins</span><br>
+</div>
+<br>
+<button onclick="search()">Search</button>
 </body>
 </html>
