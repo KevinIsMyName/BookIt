@@ -15,21 +15,14 @@
     firebase.initializeApp(config);
 </script>
 <script>
-    // Get a reference to the database service
-    var database = firebase.database();
-    function writeUserData(userId, name, email, imageUrl) {
-        firebase.database().ref('users/' + userId).set({
-            username: name,
-            email: email,
-            profile_picture : imageUrl
-        });
-    }
+
 </script>
+
 <head>
     <meta charset="UTF-8">
     <title>BookIt!</title>
 </head>
-<body>
+<body style="background-color:powderblue;">
 <div id="restaurant1">
     <h2 id="restaurant1title">Restaurant 1 title</h2>
     <h4 id="restaurant1address">Restaurant 1 address</h4>
