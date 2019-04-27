@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<!-- Insert these scripts at the bottom of the HTML, but before you use any Firebase services -->
+
+<!-- Firebase App (the core Firebase SDK) is always required and must be listed first -->
+<script src="https://www.gstatic.com/firebasejs/5.10.1/firebase-app.js"></script>
+
+<!-- Add Firebase products that you want to use -->
+<script src="https://www.gstatic.com/firebasejs/5.10.1/firebase-auth.js"></script>
+<script src="https://www.gstatic.com/firebasejs/5.10.1/firebase-database.js"></script>
+<script src="https://www.gstatic.com/firebasejs/5.10.1/firebase-storage.js"></script>
+<script>
+    // Initialize Firebase
+    var config = {
+        apiKey: "AIzaSyDOAlrnmEypVxEPGNK7gGd7_Tnyzim6ERQ",
+        authDomain: "bookittest-5a969.firebaseapp.com",
+        databaseURL: "https://bookittest-5a969.firebaseio.com",
+        projectId: "bookittest-5a969",
+        storageBucket: "bookittest-5a969.appspot.com",
+        messagingSenderId: "963844727633"
+    };
+    firebase.initializeApp(config);
+
+    function Upload () {
+        var file = document.getElementById("email").innerHTML;
+        console.log(file);
+        var storage = firebase.storage().ref();
+        storage.ref.putString(file)
+    }
+</script>
+<head>
+    <meta charset="UTF-8">
+    <title>BookIt!</title>
+</head>
+<body>
+<textarea id="email" rows="1" cols="10">Enter Something</textarea>
+<input type="button" onclick="Upload()" value="Sign Up">
+</body>
+</html>
