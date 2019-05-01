@@ -23,7 +23,6 @@
 
     function Upload () {
         var file = document.getElementById("email").innerHTML;
-        console.log(file);
         var storage = firebase.storage().ref();
         storage.ref.putString(file)
     }
