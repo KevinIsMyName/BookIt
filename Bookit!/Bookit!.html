@@ -1,0 +1,84 @@
+<html>
+<head>
+<title>Bookit!</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+* {
+  box-sizing: border-box;
+}
+body {
+  font-family: Arial, Helvetica, sans-serif;
+}
+header {
+  background-color: #666;
+  padding: 30px;
+  text-align: center;
+  font-size: 35px;
+  color: white;
+}
+
+nav {
+  float: left;
+  width: 80%;
+  height: 100px;
+  background: #ccc;
+  padding: 20px;
+}
+article {
+  float: left;
+  padding: 20px;
+  width: 80%;
+  background-color: #f1f1f1;
+  height: 200px;
+}
+section:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+footer {
+  background-color: #777;
+  padding: 10px;
+  text-align: center;
+  color: white;
+}
+
+@media (max-width: 600px) {
+  nav, article {
+    width: 100%;
+    height: auto;
+  }
+}
+</style>
+</head>
+<body>
+  <h1 style="background-color:DodgerBlue;">Bookit!</h1>
+  <nav>
+    <textarea cols='125' placeholder="Search"></textarea>
+    <p>This is the navigation bar</p>
+  </nav>
+  <article>
+    <h3>Generic Italian Restaurant</h3>
+    <p>Basic description</p>
+    <p>Rating</p>
+  </article>
+  <article>
+    <h3>Generic Chinese Restaurant</h3>
+    <p>Basic description</p>
+    <p>Rating</p>
+  </article>
+  <article>
+    <h3>This is an article</h3>
+    <p>This can go on for as long as wanted</p>
+  </article>
+  <section>
+    <h3 align=center>Popular or Promoted Restaurants</h3>
+    <p align=center>List of Restaurants with basic descriptions and ratings</p>
+    <p align=center>This is the sidebar (section) open to more ideas of what can go here</p>
+  </section>
+  <footer>
+    <p>This is the footer. This is where we can put documentation and the "about" section of the website</p>
+</body>
+</html>
