@@ -1,0 +1,82 @@
+<html>
+<head>
+<title>Bookit! Reservation</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+* {
+  box-sizing: border-box;
+}
+body {
+  font-family: Arial, Helvetica, sans-serif;
+}
+header {
+  background-color: #1e90ff;
+  padding: 30px;
+  text-align: center;
+  font-size: 35px;
+  color: white;
+}
+
+nav {
+  float: left;
+  width: 80%;
+  height: 100px;
+  background: #ccc;
+  padding: 20px;
+}
+article {
+  float: left;
+  padding: 20px;
+  width: 80%;
+  background-color: #f1f1f1;
+  height: 200px;
+}
+section:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+footer {
+  background-color: #777;
+  padding: 10px;
+  text-align: center;
+  color: white;
+}
+
+@media (max-width: 600px) {
+  nav, article {
+    width: 100%;
+    height: auto;
+  }
+}
+</style>
+</head>
+<body>
+  <header>BookIt!</header>
+  <nav>
+    <textarea cols='125' placeholder="Search"></textarea>
+    <button type='button'  align='right' id="search">Search</button>
+    <p>This is the navigation bar</p>
+  </nav>
+  <article>
+    <form action="file:///Users/dillonhill/Desktop/BookIt%20websites/Confirmed.html">
+    <ul style="list-style-type:none;">
+      <li>Name: <textarea rows='1' placeholder='Enter Your Name' id='name' required></textarea></li>
+      <li>Email: <textarea rows='1' placeholder='Enter Your Email' id='email' required></textarea></li>
+      <li>Party Number: <textarea rows='1' placeholder="Enter Number of People attending" id='people' required></textarea></li>
+      <li>Date of Reservation: <textarea rows='1' placeholder="MM/DD/YYYY" id='date' required></textarea></li>
+    </ul>
+    <input type='submit' id='confirm'>Confirm Reservation</input>
+  </form>
+  </article>
+  <section>
+    <h3 align='center'>Similar Restaurants</h3>
+    <p align='center'>Restuarants similar to this one can go here</p>
+  </section>
+  <footer>
+    <p>This is the footer. This is where we can put documentation and the "about" section of the website</p>
+  </footer>
+</body>
+</html>
