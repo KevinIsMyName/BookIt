@@ -10,21 +10,25 @@
 <script src="https://www.gstatic.com/firebasejs/6.0.2/firebase-firestore.js"></script>
 <script>
     // Initialize Firebase
-    var config = {
-        apiKey: "AIzaSyDOAlrnmEypVxEPGNK7gGd7_Tnyzim6ERQ",
-        authDomain: "bookittest-5a969.firebaseapp.com",
-        databaseURL: "https://bookittest-5a969.firebaseio.com",
-        projectId: "bookittest-5a969",
-        storageBucket: "bookittest-5a969.appspot.com",
-        messagingSenderId: "963844727633",
-    };
+    // var config = {
+    //     apiKey: "AIzaSyDOAlrnmEypVxEPGNK7gGd7_Tnyzim6ERQ",
+    //     authDomain: "bookittest-5a969.firebaseapp.com",
+    //     databaseURL: "https://bookittest-5a969.firebaseio.com",
+    //     projectId: "bookittest-5a969",
+    //     storageBucket: "bookittest-5a969.appspot.com",
+    //     messagingSenderId: "963844727633",
+    // };
+
+    firebase.initializeApp({
+        apiKey: 'AIzaSyDOAlrnmEypVxEPGNK7gGd7_Tnyzim6ERQ',
+        authDomain: '"bookittest-5a969.firebaseapp.com',
+        projectId: 'bookittest-5a969'
+    });
 
     var database = firebase.firestore();
 
-    firebase.initializeApp(config);
-
     function upload() {
-        var userEmail = document.getElementById("email").innerHTML;
+        var userEmail = document.getElementById("email").value;
         console.log("Email: " + userEmail);
 
         //check if valid e-mail?
@@ -44,7 +48,8 @@
     <title>BookIt!</title>
 </head>
 <body>
-<textarea id="email" rows="10" cols="100" placeholder="Email"></textarea>
+<!--<textarea id="shit" rows="10" cols="100" placeholder="Email"></textarea>-->
+<input type="text" id="email" name="email" placeholder="Email">
 <input type="button" onclick="upload()" value="Sign Up">
 </body>
 </html>
