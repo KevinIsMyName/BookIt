@@ -77,10 +77,9 @@
         }
 
         function upload() {
-            var userName = document.getElementById("name").value;
             var userEmail = document.getElementById("email").value;
             console.log("Email: " + userEmail);
-            console.log("Name: " + userName);
+            console.log("Name: " + );
 
             if (validateEmail(userEmail)) {
                 database.collection("users").add({
