@@ -19,6 +19,7 @@
     //     messagingSenderId: "963844727633",
     // };
 
+
     firebase.initializeApp({
         apiKey: 'AIzaSyDOAlrnmEypVxEPGNK7gGd7_Tnyzim6ERQ',
         authDomain: '"bookittest-5a969.firebaseapp.com',
@@ -29,15 +30,19 @@
 
     function upload() {
         var userEmail = document.getElementById("email").value;
+        var emailSaved = false;
         console.log("Email: " + userEmail);
 
         //check if valid e-mail?
 
         database.collection("users").add({
             email: userEmail
-        }).then(function(docRef){
-            console.log("Email " + userEmail + " saved.")
-        }).catch(function(error) {
+        }).then(function (docRef) {
+            emailSaved = true;
+            console.log("Email " + userEmail + " saved.");
+            document.getElementById("continue").style.visibility = "visible";
+            document.getElementById("output").innerHTML = "Email " + userEmail + " saved."
+        }).catch(function (error) {
             console.error("Error:\n" + error)
         });
 
@@ -50,6 +55,9 @@
 <body>
 <!--<textarea id="shit" rows="10" cols="100" placeholder="Email"></textarea>-->
 <input type="text" id="email" name="email" placeholder="Email">
-<input type="button" onclick="upload()" value="Sign Up">
+<input type="button" onclick="upload()" value="Sign Up"><br>
+<p id="output"></p>
+<a id="continue" style="visibility: hidden" href="Bookit!.html">Continue...</a>
+
 </body>
 </html>
