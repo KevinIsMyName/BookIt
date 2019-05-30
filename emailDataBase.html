@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<script src="https://www.gstatic.com/firebasejs/6.0.2/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/6.0.2/firebase-firestore.js"></script>
+<script>
+    firebase.initializeApp({
+        apiKey: 'AIzaSyDOAlrnmEypVxEPGNK7gGd7_Tnyzim6ERQ',
+        authDomain: '"bookittest-5a969.firebaseapp.com',
+        projectId:
+            'bookittest-5a969'
+    });
+
+    var database = firebase.firestore();
+
+    function validateEmail(email) {
+        var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+        return re.test(String(email).toLowerCase());
+    }
+
+    function upload() {
+        var userEmail = document.getElementById("email").value;
+        console.log("Email: " + userEmail);
+
+        if (validateEmail(userEmail)){
+            database.collection("users").add({
+                email: userEmail
+            }).then(function (docRef) {
+                console.log("Email " + userEmail + " saved.");
+                document.getElementById("continue").style.visibility = "visible";
+                document.getElementById("output").innerHTML = "Email " + userEmail + " saved."
+            }).catch(function (error) {
+                console.error("Error:\n" + error)
+            });
+        } else {
+            document.getElementById("output").innerHTML = userEmail + " is not a valid email."
+        }
+    }
+</script>
+<head>
+    <meta charset="UTF-8">
+    <title>Login!</title>
+</head>
+<body>
+<input type="email" required id="email" placeholder="Email">
+<input type="submit" onclick="upload()" value="Sign Up"><br>
+<p id="output"></p>
+<a id="continue" style="visibility: hidden" href="landingPage.html">Continue...</a>
+
+</body>
+</html>

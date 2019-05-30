@@ -94,23 +94,29 @@
                         date: date
                     };
 
-                    database.collection("users").add({
-                        name: userName,
-                        email: userEmail,
-                        reservation: JSON.stringify(rsvpJSON)
-                    }).then(function (docRef) {
-                        console.log("Email " + userEmail + " saved.");
-                        document.getElementById("continue").style.visibility = "visible";
-                        document.getElementById("output").innerHTML = "Email " + userEmail + " saved.";
 
-                        //please redirect to the new page
-                        window.location = "Confirmed.html";
-                        window.location.href = "Confirmed.html";
-                        window.location.assign("Confirmed.html");
-                        window.location.replace("Confirmed.html");
+                    var emailRef = database.collection("users").doc(userEmail).set(userEmail);
+                    console.log(userEmail);
+                    database.collection("users").add({
+                        name: userName
+                        // reservations: JSON.stringify(rsvpJSON)
+                    }).then(function (docRef) {
+                        // emailRef.reservations.update({
+                        //     arrayUnion(JSON.stringify(rsvpJSON));
+                        // }).catch(function(error){
+                        //     console.error("Error:\n" + error)
+                        // });
+
+                        // redirect to the confirmed page
+                        // window.location = "Confirmed.html";
+                        // window.location.href = "Confirmed.html";
+                        // window.location.assign("Confirmed.html");
+                        // window.location.replace("Confirmed.html");
                     }).catch(function (error) {
                         console.error("Error:\n" + error)
                     });
+
+                    // database.collection("users").doc(userEmail)
                 } else {
                     document.getElementById("output").innerHTML = "Please enter a valid email."
                 }

@@ -78,46 +78,22 @@
 
         function upload() {
             var userEmail = document.getElementById("email").value;
-            var userName = document.getElementById("name").value;
-            var partySize = document.getElementById("partySize").value;
-            var time = document.getElementById("time").value;
-            var date = document.getElementById("date").value;
-            var restaurant = ""; //HOW DO YOU GET THIS RESTAURANT NAME
-            document.getElementById("output").innerHTML = "Processing...";
+            console.log("Email: " + userEmail);
+            console.log("Name: " + );
 
-            if (userName !== "" && !isNaN(partySize) && time !== "" && date !== "") {
-                if (validateEmail(userEmail)) {
-                    var rsvpJSON = {
-                        restaurantName: restaurant,
-                        partySize: parseInt(partySize),
-                        time: time,
-                        date: date
-                    };
-
-                    database.collection("users").add({
-                        name: userName,
-                        email: userEmail,
-                        reservation: JSON.stringify(rsvpJSON)
-                    }).then(function (docRef) {
-                        console.log("Email " + userEmail + " saved.");
-                        document.getElementById("continue").style.visibility = "visible";
-                        document.getElementById("output").innerHTML = "Email " + userEmail + " saved.";
-
-                        //please redirect to the new page
-                        window.location = "Confirmed.html";
-                        window.location.href = "Confirmed.html";
-                        window.location.assign("Confirmed.html");
-                        window.location.replace("Confirmed.html");
-                    }).catch(function (error) {
-                        console.error("Error:\n" + error)
-                    });
-                } else {
-                    document.getElementById("output").innerHTML = "Please enter a valid email."
-                }
+            if (validateEmail(userEmail)) {
+                database.collection("users").add({
+                    email: userEmail
+                }).then(function (docRef) {
+                    console.log("Email " + userEmail + " saved.");
+                    document.getElementById("continue").style.visibility = "visible";
+                    document.getElementById("output").innerHTML = "Email " + userEmail + " saved."
+                }).catch(function (error) {
+                    console.error("Error:\n" + error)
+                });
             } else {
-                document.getElementById("output").innerHTML = "Please fill out the form completely.";
+                document.getElementById("output").innerHTML = userEmail + " is not a valid email."
             }
-
         }
     </script>
 </head>
@@ -134,7 +110,6 @@
             <li><input type="text" id="name" placeholder="Name"></li>
             <li><input type="email" required id="email" placeholder="Email"></li>
             <li><input type="number" id="partySize" placeholder="Party Size" min="1" max="999"></li>
-            <li><input type="text" id="time" placeholder="00:00 AM/PM"></li>
             <li><input type="text" id="date" placeholder="MM/DD/YYYY"></li>
             <li><input type='submit' id="confirm" onclick="upload()" style="width: 5em"></li>
         </ul>
