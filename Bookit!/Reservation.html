@@ -101,18 +101,18 @@
 <body>
 <header>BookIt!</header>
 <nav>
-    <textarea cols='125' placeholder="Search"></textarea>
-    <button type='button' align='right' id="search">Search</button>
+    <textarea cols='125' placeholder="Search" tabindex="1"></textarea>
+    <button type='button' align='right' id="search" tabindex="2">Search</button>
     <p>This is the navigation bar</p>
 </nav>
 <article>
-    <form action="file:///Users/dillonhill/Desktop/BookIt%20websites/Confirmed.html">
+    <form action="Confirmed.html">
         <ul style="list-style-type:none;">
-            <li><input type="text" id="name" placeholder="Name"></li>
-            <li><input type="email" required id="email" placeholder="Email"></li>
-            <li><input type="number" id="partySize" placeholder="Party Size" min="1" max="999"></li>
-            <li><input type="text" id="date" placeholder="MM/DD/YYYY"></li>
-            <li><input type='submit' id="confirm" onclick="upload()" style="width: 5em"></li>
+            <li><input type="text" id="name" placeholder="Name" tabindex="3"></li>
+            <li><input type="email" required id="email" placeholder="Email" tabindex="4"></li>
+            <li><input type="number" id="partySize" placeholder="Party Size" min="1" max="999" tabindex="5"></li>
+            <li><input type="text" id="date" placeholder="MM/DD/YYYY" tabindex="6"></li>
+            <li><input type='submit' id="confirm" onclick="upload()" style="width: 5em" tabindex="7"></li>
         </ul>
     </form>
     <p id="output"></p>
