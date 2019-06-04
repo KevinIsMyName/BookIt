@@ -1,91 +1,140 @@
 <html>
 <head>
-  <title>Bookit!</title>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <style>
-    * {
-      box-sizing: border-box;
-    }
-    img {
-      float: left;
-    }
-    body {
-      font-family: Arial, Helvetica, sans-serif;
-    }
-    header {
-      background-color: #1e90ff;
-      padding: 30px;
-      text-align: center;
-      font-size: 35px;
-      color: white;
-    }
+	<title>Bookit!</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<style>
+		* {
+			box-sizing: border-box;
+		}
 
-    nav {
-      float: left;
-      width: 80%;
-      height: 100px;
-      background: #ccc;
-      padding: 20px;
-    }
-    article {
-      float: left;
-      padding: 20px;
-      width: 80%;
-      background-color: #f1f1f1;
-      height: 200px;
-    }
-    section:after {
-      content: "";
-      display: table;
-      clear: both;
-    }
+		img {
+			float: left;
+			width: 250px;
+			height: 250px;
+			padding: 10px
+		}
 
-    footer {
-      background-color: #777;
-      padding: 10px;
-      text-align: center;
-      color: white;
-    }
+		body {
+			font-family: Arial, Helvetica, sans-serif;
+		}
 
-    @media (max-width: 600px) {
-      nav, article {
-        width: 100%;
-        height: auto;
-      }
-    }
-  </style>
+		header {
+			background-color: #1e90ff;
+			padding: 30px;
+			text-align: center;
+			font-size: 35px;
+			color: white;
+		}
+
+		nav {
+			float: left;
+			width: 80%;
+			height: 100px;
+			background: #ccc;
+			padding: 20px;
+		}
+
+		article {
+			float: left;
+			padding: 10px;
+			width: 80%;
+			background-color: #f1f1f1;
+			height: 250px;
+		}
+
+		section:after {
+			content: "";
+			display: table;
+			clear: both;
+		}
+
+		footer {
+			background-color: #777;
+			padding: 10px;
+			text-align: center;
+			color: white;
+		}
+
+		@media (max-width: 600px) {
+			nav, article {
+				width: 100%;
+				height: auto;
+			}
+		}
+	</style>
 </head>
 <body>
 <header>BookIt!</header>
 <nav>
-  <textarea cols='125' placeholder="Search" tabindex="1"></textarea>
-  <button type='button'  align='right' id="search" tabindex="2">Search</button>
-  <p>This is the navigation bar</p>
+	<script src="search.js"></script>
+	<textarea cols='125' id="searchQuery" placeholder="Search" tabindex="1"></textarea>
+	<button type='button' align='right' id="searchButton" onclick="searchByName()" tabindex="2">Search</button>
+	<button type='button' align='right' id="resetSearch" onclick="resetSearch()" tabindex="2">Reset Search</button>
+	<p>This is the navigation bar</p>
 </nav>
-<article>
-  <img src='https://s3-media3.fl.yelpcdn.com/bphoto/yGUes8eVe9oF_-_qFx1Ogg/ls.jpg' style="width:150px;height:150px;">
-  <h3>Generic Italian Restaurant</h3>
-  <p>Basic description<br>Rating</p>
-  <a href="Reservation.html" tabindex="3">Make a Reservation</a>
+<article id="restaurant0">
+	<img src='https://s3-media3.fl.yelpcdn.com/bphoto/hJ3-QRGPgpkBld-3Fno8gA/ls.jpg'>
+	<h3>Dim Sum House</h3>
+	<p><em>Dim Sum House by Jane Gs is now open in the University City area of Philadelphia, PA at 3939</em><br>
+		3939 Chestnut St, Philadelphia, PA 19104<br>
+		★★★★☆</p>
+	<a href="mailto: jghgroup.3939@gmail.com">Email this restaurant</a><br>
+	<a href="http://dimsum.house/">Website</a><br>
+	<a href="Reservation.html" tabindex="3">RSVP</a>
 </article>
-<article>
-  <img src='https://thumbs-prod.si-cdn.com/WqzyU73mKB9wu_z4FGBYtPOs4hg=/800x600/filters:no_upscale()/https://public-media.si-cdn.com/filer/2f/df/2fdf811a-36d0-4de1-a695-476be549112c/istock-503692580.jpg' style="width:150px;height:150px;">
-  <h3>Generic Chinese Restaurant</h3>
-  <p>Basic description<br>Rating</p>
-  <a href="Reservation.html" tabindex="4">Make a Reservation</a>
+<article id="restaurant1">
+	<img src='https://www.universitycity.org/sites/default/files/styles/restaurant_image/public/UCD-Annual-Report-to-review-00718.JPG?itok=j9p60C9j'>
+	<h3>Landmark Americana Tap & Grill - University City</h3>
+	<p><em>City Line. Ewing. Glassboro. University City. Copyright © 2019 Landmark Americana.</em><br>
+		★★★☆☆<br>
+		3333 Market St, Philadelphia, PA 19104<br></p>
+	<a href="mailto: INFOP@LANDMARKAMERICANA.COM">Email this restaurant</a><br>
+	<a href="http://www.landmarkamericana.com/ph-home/index.html">Website</a><br>
+	<a href="Reservation.html" tabindex="4">RSVP</a>
 </article>
-<article>
-  <h3>This is an article</h3>
-  <p>This can go on for as long as wanted</p>
+<article id="restaurant2">
+	<img src='https://handynasty.net/img/logo.jpg'>
+	<h3>Han Dynasty</h3>
+	<p><em>Spicy Sichuan dishes like dan dan noodles are heat-rated by number at this casual local chain.</em><br>
+		★★★★☆<br>
+		3711 Market St, Philadelphia, PA 19104<br></p>
+	<a href="mailto: infoucity@handynasty.net">Email this restaurant</a><br>
+	<a href="https://handynasty.net/ucity/">Website</a><br>
+	<a href="Reservation.html" tabindex="5">RSVP</a>
+</article>
+<article id="restaurant3">
+	<img src='https://s3-media2.fl.yelpcdn.com/bphoto/IfVl0yVvi8oVMD1_k91oPA/ls.jpg'>
+	<h3>Louie Louie</h3>
+	<p><em>A European Bistro in the heart of University City, Louie Louie embodies the joie de vivre of the grand cafes
+		of France, where old friends gather and new ones ...</em><br>
+		★★★★☆<br>
+		3611 Walnut St, Philadelphia, PA 19104<br></p>
+	<a href="mailto: info@louielouie.restaurant">Email this restaurant</a><br>
+	<a href="https://www.louielouie.restaurant/">Website</a><br>
+	<a href="Reservation.html" tabindex="6">RSVP</a>
+</article>
+<article id="restaurant4">
+	<img src="https://s3-media1.fl.yelpcdn.com/bphoto/DCAWbtqvkY_CanRSvE2Ewg/348s.jpg">
+	<h3>Destination Dogs</h3>
+	<p><em>Destination Dogs was founded and is owned by two partners: Jimmy Cronk, and Sean Hosty</em><br>
+		★★★★☆<br>
+		1111 Walnut St, Philadelphia, PA 19107</p>
+	<a href="mailto: contact@destinationdogs.com">Email this restaurant</a><br>
+	<a href="http://www.destinationdogs.com/">Website</a><br>
+	<a href="Reservation.html" tabindex="7">RSVP</a>
+</article>
+<article id="restaurant5">
+	<h3>This is an article</h3>
+	<p>This can go on for as long as wanted</p>
 </article>
 <section>
-  <h3 align=center>Popular or Promoted Restaurants</h3>
-  <p align=center>List of Restaurants with basic descriptions and ratings</p>
-  <p align=center>This is the sidebar (section) open to more ideas of what can go here</p>
+	<h3 align=center>Popular or Promoted Restaurants</h3>
+	<p align=center>List of Restaurants with basic descriptions and ratings</p>
+	<p align=center>This is the sidebar (section) open to more ideas of what can go here</p>
 </section>
 <footer>
-  <p>This is the footer. This is where we can put documentation and the "about" section of the website</p>
+	<p>This is the footer. This is where we can put documentation and the "about" section of the website</p>
 </footer>
 </body>
 </html>
