@@ -37,7 +37,7 @@ let searchTerms = {
     noisy: "Loud"
 };
 
-function search() {
+function searchOld() {
     for (let i = 1; i < restaurantNames.length; i++) {
         for (let i = 1; i <= restaurantNames.length; i++) {
             for (var key in searchTerms) {
@@ -55,7 +55,7 @@ function search() {
     }
 }
 
-function searchByName() {
+function search() {
     let restaurantQuery = document.getElementById("searchQuery").value.toLowerCase();
     for (let i = 0; i < restaurantNames.length; i++) {
         let restaurantVar = "restaurant" + i;

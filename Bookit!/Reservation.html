@@ -56,13 +56,18 @@
 			}
 		}
 
-		input {
-			width: 12.45em;
-		}
-	</style>
-	<script src="https://www.gstatic.com/firebasejs/6.0.2/firebase-app.js"></script>
-	<script src="https://www.gstatic.com/firebasejs/6.0.2/firebase-firestore.js"></script>
-	<script>
+        input {
+            width: 12.45em;
+        }
+    </style>
+    <script src="https://www.gstatic.com/firebasejs/6.0.2/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/6.0.2/firebase-firestore.js"></script>
+    <script type="text/javascript" src="https://cdn.emailjs.com/sdk/2.3.2/email.min.js"></script>
+    <script>
+        (function(){
+            emailjs.init("user_Ch4EaaOVaMxlnrTR7QxbM");
+        })();
+        //EmailUsername: bookit778@gmail.com
         firebase.initializeApp({
             apiKey: 'AIzaSyDOAlrnmEypVxEPGNK7gGd7_Tnyzim6ERQ',
             authDomain: '"bookittest-5a969.firebaseapp.com',
@@ -85,6 +90,19 @@
             let restaurant = ""; //HOW DO YOU GET THIS RESTAURANT NAME
             document.getElementById("output").innerHTML = "Processing...";
 
+            var template_params = {
+                "userEmail": userEmail,
+                "userName": userName,
+                "restaurantName": "restaurantName_value",
+                "partysize": partySize,
+                "date": date,
+                "time": time
+            };
+
+            var service_id = "default_service";
+            var template_id = "bookit";
+
+
             if (userName !== "" && !isNaN(partySize) && time !== "" && date !== "" && validateEmail(userEmail)) {
                 let rsvpJSON = JSON.stringify({
                     restaurantName: restaurant,
@@ -92,6 +110,8 @@
                     time: time,
                     date: date
                 });
+
+                emailjs.send(service_id, template_id, template_params);
 
                 database.collection("users").doc(userEmail).set({
                     email: userEmail,
@@ -115,11 +135,11 @@
 </head>
 <body>
 <header>BookIt!</header>
-<nav>
-	<textarea cols='125' placeholder="Search"></textarea>
-	<button type='button' align='right' id="search">Search</button>
-	<p>This is the navigation bar</p>
-</nav>
+<!--<nav>-->
+    <!--<textarea cols='125' placeholder="Search" tabindex="1"></textarea>-->
+    <!--<button type='button' align='right' id="search" tabindex="2">Search</button>-->
+    <!--<p>This is the navigation bar</p>-->
+<!--</nav>-->
 <article>
 	<form action="Confirmed.html">
 		<ul style="list-style-type:none;">
