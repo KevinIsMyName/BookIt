@@ -1,4 +1,4 @@
-// search.js
+// searchByNameByName.js
 
 let restaurant1 = {
     title: "Restaurant 1 title",

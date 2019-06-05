@@ -40,6 +40,7 @@
 			content: "";
 			display: table;
 			clear: both;
+			background-color: #f1f1f1;
 		}
 
 		footer {
@@ -56,15 +57,16 @@
 			}
 		}
 
-        input {
-            width: 12.45em;
-        }
-    </style>
-    <script src="https://www.gstatic.com/firebasejs/6.0.2/firebase-app.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/6.0.2/firebase-firestore.js"></script>
-    <script type="text/javascript" src="https://cdn.emailjs.com/sdk/2.3.2/email.min.js"></script>
-    <script>
-        (function(){
+		input, select {
+			font-size: 120%;
+			width: 50%;
+		}
+	</style>
+	<script src="https://www.gstatic.com/firebasejs/6.0.2/firebase-app.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/6.0.2/firebase-firestore.js"></script>
+	<script type="text/javascript" src="https://cdn.emailjs.com/sdk/2.3.2/email.min.js"></script>
+	<script>
+        (function () {
             emailjs.init("user_Ch4EaaOVaMxlnrTR7QxbM");
         })();
         //EmailUsername: bookit778@gmail.com
@@ -87,31 +89,45 @@
             let partySize = document.getElementById("partySize").value;
             let time = document.getElementById("time").value;
             let date = document.getElementById("date").value;
-            let restaurant = ""; //HOW DO YOU GET THIS RESTAURANT NAME
+            let restaurant = document.getElementById("restaurantOption").value; //HOW DO YOU GET THIS RESTAURANT NAME
             document.getElementById("output").innerHTML = "Processing...";
 
-            var template_params = {
-                "userEmail": userEmail,
-                "userName": userName,
-                "restaurantName": "restaurantName_value",
-                "partysize": partySize,
-                "date": date,
-                "time": time
-            };
-
-            var service_id = "default_service";
-            var template_id = "bookit";
-
+            let rsvpJSON = JSON.stringify({
+                restaurantName: restaurant,
+                partySize: parseInt(partySize),
+                time: time,
+                date: date
+            });
 
             if (userName !== "" && !isNaN(partySize) && time !== "" && date !== "" && validateEmail(userEmail)) {
-                let rsvpJSON = JSON.stringify({
-                    restaurantName: restaurant,
-                    partySize: parseInt(partySize),
-                    time: time,
-                    date: date
-                });
+                //sending to user
+                var template_params = {
+                    "userEmail": userEmail,
+                    "userName": userName,
+                    "restaurantName": restaurant,
+                    "partysize": partySize,
+                    "date": date,
+                    "time": time
+                };
 
+                var service_id = "default_service";
+                var template_id = "bookit";
                 emailjs.send(service_id, template_id, template_params);
+
+                //sending to restaurant
+                var template_params2 = {
+                    "restaurantEmail": "wu.kevin.2520@gmail.com", //get from data
+                    "restaurantName": restaurant,
+                    "userName": userName,
+                    "date": date,
+                    "time": time,
+                    "partysize": partySize
+                };
+
+                var service_id2 = "default_service";
+                var template_id2 = "template_v3jECPIO";
+                emailjs.send(service_id2, template_id2, template_params2);
+
 
                 database.collection("users").doc(userEmail).set({
                     email: userEmail,
@@ -135,16 +151,20 @@
 </head>
 <body>
 <header>BookIt!</header>
-<!--<nav>-->
-    <!--<textarea cols='125' placeholder="Search" tabindex="1"></textarea>-->
-    <!--<button type='button' align='right' id="search" tabindex="2">Search</button>-->
-    <!--<p>This is the navigation bar</p>-->
-<!--</nav>-->
 <article>
 	<form action="Confirmed.html">
 		<ul style="list-style-type:none;">
 			<li><input type="text" id="name" placeholder="Name"></li>
 			<li><input type="email" required id="email" placeholder="Email"></li>
+			<select id="restaurantOption">
+				<option value="Dim Sum House">Dim Sum House</option>
+				<option value="Landmark Americana Tap & Grill - University City">Landmark Americana Tap & Grill -
+					University City
+				</option>
+				<option value="Han Dynasty">Han Dynasty</option>
+				<option value="Louie Louie">Louie Louie</option>
+				<option value="Destination Dogs">Destination Dogs</option>
+			</select>
 			<li><input type="number" id="partySize" placeholder="Party Size" min="1" max="999"></li>
 			<li><input type="text" id="time" placeholder="00:00 AM/PM"></li>
 			<li><input type="text" id="date" placeholder="MM/DD/YYYY"></li>
@@ -154,8 +174,6 @@
 	<p id="output"></p>
 </article>
 <section>
-	<h3 align='center'>Similar Restaurants</h3>
-	<p align='center'>Restaurants similar to this one can go here</p>
 </section>
 <footer>
 	<p>This is the footer. This is where we can put documentation and the "about" section of the website</p>
